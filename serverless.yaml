@@ -2,22 +2,22 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: An AWS Serverless Specification template describing your function.
 Resources:
-  Testhello:
+  LambdaWithSNS:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: lambda_function.lambda_handler
       Runtime: python3.6
-      CodeUri: s3://reethi-sam/Test-hello-78cb44bb-1bb3-4bc9-b643-724967499bca.zip
+      CodeUri: s3://<bucket name>/<key file>
       Description: ''
       MemorySize: 128
       Timeout: 3
-      Role: 'arn:aws:iam::067162466290:role/lambda_all'
+      Role: 'arn:aws:iam::xxxxxxx:role/lambda_basic_execute'
      
   
   SNS1:
     Type: 'AWS::SNS::Subscription'
     Properties:
-      FilterPolicy:  '{"MyProperty": ["valueToAccept"] }'
-      TopicArn: 'arn:aws:sns:us-east-1:067162466290:LambdaTopic'
+      FilterPolicy:  '{"Filterby": ["SomeValue"] }'
+      TopicArn: 'arn:aws:sns:us-east-1:xxxxxxxx:SomeTopic'
       Protocol: lambda
-      Endpoint: !GetAtt Testhello.Arn
+      Endpoint: !GetAtt LambdaWithSNS.Arn
