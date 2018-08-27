@@ -11,10 +11,9 @@ Resources:
       Description: ''
       MemorySize: 128
       Timeout: 3
-      Role: 'arn:aws:iam::xxxxxxx:role/lambda_basic_execute'
-     
-  
-  SNS1:
+      Role: 'arn:aws:iam::xxxxxxx:role/lambda_basic_execute'  
+      
+  SNSSubscription:
     Type: 'AWS::SNS::Subscription'
     Properties:
       FilterPolicy:  '{"Filterby": ["SomeValue"] }'
